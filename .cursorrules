@@ -1,0 +1,213 @@
+# Cursor Rules
+
+## Instructions
+
+- Record fixes for mistakes or corrections to avoid repetition in the `Lessons` section.
+- Organize thoughts and plan steps before starting a task in the `Scratchpad` section.
+- Clear old tasks if necessary.
+- Use todo markers for progress tracking:
+  - `[X]` Completed tasks
+  - `[ ]` Pending tasks
+- Update Scratchpad after completing subtasks.
+- Reflect and plan after milestones for better task management.
+- Always refer to Scratchpad before planning the next step.
+
+## Lessons
+
+1. Use `npx shadcn@latest add [component]` instead of `npx shadcn-ui@latest add [component]` when installing Shadcn UI components.
+2. In Next.js 14+, page props params must be typed as a Promise. Example:
+   ```typescript
+   type tParams = Promise<{ id: string }>
+   interface PageProps {
+     params: tParams
+   }
+   ```
+   Then await the params in the component:
+   ```typescript
+   export default async function Page(props: PageProps) {
+     const { id } = await props.params
+   }
+   ```
+3. Use `const session = await auth()` instead of `const session = await getServerSession(authOptions)` for Next.js authentication. The new `auth()` function is the recommended way to get the session in Next.js Auth v5.
+4. When importing `useRouter` from 'next/navigation', the component must be marked as a client component using the `'use client'` directive at the top of the file, as this hook only works on the client side.
+
+## Scratchpad
+
+### 1. Project Setup and Configuration [X]
+
+- [x] Initialize Next.js 15 project with TypeScript
+- [x] Set up project structure and folders
+- [x] Configure ESLint and Prettier
+- [x] Install and configure dependencies:
+  - React and Tailwind CSS
+  - Zod for validation
+  - Zustand for state management (e.g., for filters and preferences)
+  - Recharts for cutoff trends and analytics
+  - Resend for emails (e.g., notifications)
+  - Uploadthing for file uploads (e.g., college logos or PDFs)
+  - Prisma ORM or Mongoose for database
+  - MongoDB database
+  - NextAuth.js beta for authentication (for user comments and saved preferences)
+  - Disqus for comment sections
+
+### 2. Database and Authentication [X]
+
+- [x] Set up MongoDB database
+- [x] Configure schema (using Mongoose or Prisma):
+  - College model (name, location, type, branches, cutoffs, fees, placements, facilities)
+  - Exam model (JEE Main/Advanced details, dates, eligibility)
+  - Cutoff model (year-wise, branch-wise, category-wise)
+  - News model (articles on exams and counseling)
+  - User model (for authentication, saved preferences, comments)
+- [x] Implement NextAuth.js authentication:
+  - Email/Password
+  - OAuth providers (Google, GitHub)
+  - JWT handling
+  - Protected routes (e.g., for user dashboard or admin)
+
+### 3. Core Features - Student Side [ ]
+
+- [x] Home Layout:
+  - Create `(home)` folder in `app` directory
+  - Header with logo, search bar, and navigation (Home, Colleges, Exams, Cutoffs, News, Counseling, Choice Filling)
+  - Footer with links (About, Contact, Privacy Policy) and social media
+- [x] Homepage:
+  - Hero section with search bar
+  - Featured colleges section with cards
+  - Latest news updates
+- [x] College Finder:
+  - Sidebar with filters (state, type, branch, category)
+  - Search results grid
+  - Pagination
+- [x] College Pages:
+  - Create college detail page layout
+  - Implement tabs for sections:
+    - Overview (location, establishment, rankings)
+    - Admission (eligibility, JEE requirements, counseling)
+    - Cutoffs (branch-wise, category-wise tables)
+    - Fees (tuition, hostel)
+    - Placements (packages, recruiters)
+    - Facilities (hostels, labs)
+    - Contact and map
+  - Reviews and ratings section:
+    - Display existing reviews (using Disqus)
+    - Add review form for authenticated users
+    - Star rating component
+  - Related colleges section:
+    - Show similar colleges
+    - College card carousel
+- [x] Exam Pages:
+  - Details for JEE Main, JEE Advanced, etc.
+  - Eligibility, syllabus, dates, application process
+  - Links to official sites
+- [x] Cutoff Pages:
+  - Filterable tables (college, branch, category, year)
+  - Downloadable PDFs
+  - Cutoff trends chart using Recharts
+- [x] News Section:
+  - Articles on exam results, counseling schedules
+  - Categorized by exam
+- [x] Counseling Guides:
+  - Pages for JoSAA, state counseling, private admissions
+  - Choice-filling strategies and FAQs
+- [x] User Dashboard:
+  - Saved preferences and choice lists
+  - Profile management
+  - Comment history
+
+### 4. Admin Dashboard [ ]
+
+- [x] Admin authentication and authorization
+- [ ] Dashboard overview:
+  - [x] Layout and Structure:
+    - [x] Create admin dashboard layout with sidebar navigation
+    - [x] Implement responsive grid for dashboard widgets
+    - [x] Add loading states and error boundaries
+  - [x] Key Metrics Cards:
+    - [x] Total colleges widget with real data
+    - [x] Total users widget with real data
+    - [x] Total news articles widget with real data
+    - [x] Recent updates widget with real data
+  - [x] Analytics:
+    - [x] Cutoff Trends Chart:
+      - [x] Implement line/bar chart using Recharts
+      - [x] Add yearly/round-wise filters
+      - [x] Show trends over time
+      - [x] Add tooltip with details
+    - [x] User Engagement:
+      - [x] Views by page
+      - [x] Search queries distribution
+  - [x] Recent Updates Table:
+    - [x] Implement data table with columns:
+      - [x] Update ID
+      - [x] Type (college, cutoff, news)
+      - [x] Description
+      - [x] Date
+    - [x] Add sorting and filtering
+    - [x] Quick actions (view, edit, delete)
+  - [ ] Low Data Alerts:
+    - Colleges with outdated cutoffs
+    - Quick update actions
+  - [ ] Top Colleges:
+    - Most viewed colleges
+    - Search popularity
+  - [ ] User Insights:
+    - New vs returning users
+    - Top search terms
+  - [ ] Real-time Updates:
+    - Implement WebSocket connection
+    - Live news notifications
+    - Data refresh
+  - [ ] Export and Reports:
+    - CSV/PDF export for cutoffs
+    - Custom date range
+    - Report generation
+- [ ] College Management:
+  - CRUD operations for colleges and cutoffs
+  - Bulk updates
+  - Image/PDF upload (Uploadthing)
+- [ ] News Management:
+  - CRUD for news articles
+  - Category management
+- [ ] User Management:
+  - User list
+  - Admin privileges
+  - Comment moderation
+
+### 5. Advanced Features [ ]
+
+- [ ] Choice-Filling Tool:
+  - Input rank, category, preferences
+  - Generate suggestions based on cutoffs
+  - Save lists for authenticated users
+- [ ] College Predictor:
+  - Predict based on rank and historical data
+- [ ] Real-time notifications (e.g., new cutoffs)
+- [ ] Email system (Resend):
+  - Subscription updates
+  - Password reset
+- [ ] Search optimization (e.g., fuzzy search)
+- [ ] Performance optimization:
+  - Image optimization
+  - Caching strategies
+  - API optimization
+- [ ] Analytics and reporting
+
+### 6. Testing and Deployment [ ]
+
+- [ ] Unit testing
+- [ ] Integration testing
+- [ ] E2E testing
+- [ ] Security audit
+- [ ] Production deployment:
+  - Environment setup
+  - CI/CD pipeline
+  - Monitoring
+  - Backup strategy
+
+### 7. Documentation [ ]
+
+- [ ] API documentation
+- [ ] User guide
+- [ ] Admin documentation
+- [ ] Deployment guide
