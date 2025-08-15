@@ -53,17 +53,17 @@
 ### 2. Database and Authentication [X]
 
 - [x] Set up MongoDB database
-- [x] Configure schema (using Mongoose or Prisma):
-  - College model (name, location, type, branches, cutoffs, fees, placements, facilities)
-  - Exam model (JEE Main/Advanced details, dates, eligibility)
-  - Cutoff model (year-wise, branch-wise, category-wise)
-  - News model (articles on exams and counseling)
-  - User model (for authentication, saved preferences, comments)
+- [x] Configure schema (using Mongoose):
+  - [x] College model (name, location, type, branches, cutoffs, fees, placements, facilities)
+  - [x] Exam model (JEE Main/Advanced details, dates, eligibility)
+  - [x] Cutoff model (year-wise, branch-wise, category-wise)
+  - [x] News model (articles on exams and counseling)
+  - [x] User model (for authentication, saved preferences, comments)
 - [x] Implement NextAuth.js authentication:
-  - Email/Password
-  - OAuth providers (Google, GitHub)
-  - JWT handling
-  - Protected routes (e.g., for user dashboard or admin)
+  - [x] Email/Password
+  - [x] OAuth providers (Google, GitHub)
+  - [x] JWT handling
+  - [x] Protected routes (e.g., for user dashboard or admin)
 
 ### 3. Core Features - Student Side [ ]
 
