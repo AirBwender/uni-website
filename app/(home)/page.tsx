@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
-import { Search, Building2, BookOpen, TrendingUp } from 'lucide-react';
+import { Search, Building2, BookOpen, TrendingUp, User } from 'lucide-react';
+import Link from 'next/link';
 
 export default function HomePage() {
   return (
@@ -12,8 +13,6 @@ export default function HomePage() {
           <p className="text-xl text-gray-600 mb-8">
             Your comprehensive guide to college admissions and cutoffs
           </p>
-          
-          {/* Test all dependencies are working */}
           <div className="flex justify-center gap-4 mb-8">
             <Button className="flex items-center gap-2">
               <Search className="w-4 h-4" />
@@ -31,6 +30,12 @@ export default function HomePage() {
               <TrendingUp className="w-4 h-4" />
               Trends
             </Button>
+            <Link href="/signin">
+              <Button variant="outline" className="flex items-center gap-2">
+                <User className="w-4 h-4" />
+                Sign In
+              </Button>
+            </Link>
           </div>
         </div>
 
@@ -60,3 +65,5 @@ export default function HomePage() {
     </main>
   );
 }
+
+

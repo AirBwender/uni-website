@@ -10,6 +10,10 @@ const UserSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  password: {
+    type: String,
+    required: false, // Not required for OAuth users
+  },
   image: String,
   role: {
     type: String,

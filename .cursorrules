@@ -60,17 +60,19 @@
   - [x] News model (articles on exams and counseling)
   - [x] User model (for authentication, saved preferences, comments)
 - [x] Implement NextAuth.js authentication:
-  - [x] Email/Password
-  - [x] OAuth providers (Google, GitHub)
-  - [x] JWT handling
-  - [x] Protected routes (e.g., for user dashboard or admin)
+  - [x] Email/Password authentication with signup/signin pages
+  - [x] OAuth providers (Google, GitHub) configured (Google added)
+  - [x] JWT handling and session management
+  - [x] Protected routes (dashboard with authentication check)
+  - [x] User registration with password hashing
+  - [x] SessionProvider setup for client-side auth
 
 ### 3. Core Features - Student Side [ ]
 
 - [x] Home Layout:
-  - Create `(home)` folder in `app` directory
-  - Header with logo, search bar, and navigation (Home, Colleges, Exams, Cutoffs, News, Counseling, Choice Filling)
-  - Footer with links (About, Contact, Privacy Policy) and social media
+  - [x] Create `(home)` folder in `app` directory
+  - [x] Header with logo, search bar, and navigation (Home, Colleges, Exams, Cutoffs, News, Counseling, Choice Filling)
+  - [x] Footer with links (About, Contact, Privacy Policy) and social media
 - [x] Homepage:
   - Hero section with search bar
   - Featured colleges section with cards
